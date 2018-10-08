@@ -16,24 +16,27 @@ public class BookResult {
     final static int RECOMMENDER_NUM = 1000;
 
     public static void main(String[] args) throws TasteException, IOException {
-        String file = "datafile/book/rating.csv";
+        String file = "/apps/GitWorkSpace/mahout_demo/datafile/item_cf_1.csv";
         DataModel dataModel = RecommendFactory.buildDataModel(file);
         RecommenderBuilder rb1 = BookEvaluator.userEuclidean(dataModel);
         RecommenderBuilder rb2 = BookEvaluator.itemEuclidean(dataModel);
         RecommenderBuilder rb3 = BookEvaluator.userEuclideanNoPref(dataModel);
         RecommenderBuilder rb4 = BookEvaluator.itemEuclideanNoPref(dataModel);
-        
+        RecommenderBuilder rb5 = BookEvaluator.itemLoglikelihood(dataModel);
+
         LongPrimitiveIterator iter = dataModel.getUserIDs();
         while (iter.hasNext()) {
             long uid = iter.nextLong();
-            System.out.print("userEuclidean       =>");
-            result(uid, rb1, dataModel);
-            System.out.print("itemEuclidean       =>");
-            result(uid, rb2, dataModel);
-            System.out.print("userEuclideanNoPref =>");
-            result(uid, rb3, dataModel);
-            System.out.print("itemEuclideanNoPref =>");
-            result(uid, rb4, dataModel);
+//            System.out.print("userEuclidean       =>");
+//            result(uid, rb1, dataModel);
+//            System.out.print("itemEuclidean       =>");
+//            result(uid, rb2, dataModel);
+//            System.out.print("userEuclideanNoPref =>");
+//            result(uid, rb3, dataModel);
+//            System.out.print("itemEuclideanNoPref =>");
+//            result(uid, rb4, dataModel);
+            System.out.print("itemLikeLood       =>");
+            result(uid, rb5, dataModel);
         }
     }
 
